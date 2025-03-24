@@ -23,36 +23,37 @@ except:
 # ✅ Title & intro
 st.markdown(
     """
-    <h2 style='text-align: center;'>Welcome to <span style="color:#3b5bdb;">AI Assistant Hub</span> 👋</h2>
+    <h2 style='text-align: center;'>Welcome to <span style="color:#5a78d1;">AI Assistant Hub</span> 👋</h2>
     <p style='text-align: center; font-size: 1.1rem; color: #444;'>Hi User! What would you like to do today?</p>
     """,
     unsafe_allow_html=True
 )
 
-# ✅ Style override for consistent UI
+# ✅ Style override for pastel theme
 st.markdown("""
     <style>
     .stButton > button {
-        background-color: #3b5bdb;
-        color: white;
+        background-color: #b3c7ff;
+        color: #222;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         font-size: 1rem;
         padding: 0.75rem 1.5rem;
         width: 100%;
         margin: 0.5rem 0;
+        transition: all 0.2s ease-in-out;
     }
 
     .stButton > button:hover {
-        background-color: #2f4ab9;
-        color: white;
+        background-color: #a0bfff;
+        color: #000;
     }
 
     .footer-text {
         text-align: center;
         margin-top: 3rem;
         font-size: 0.9rem;
-        color: #aaa;
+        color: #888;
     }
 
     hr {
