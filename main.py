@@ -105,7 +105,7 @@ st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
 # ✅ Display Logo
 try:
-    logo = Image.open("logo.png")
+    logo = Image.open("logo.jpg")
     st.image(logo, width=120)
 except:
     st.warning("Logo not found. Please ensure 'logo.png' is in your project directory.")
