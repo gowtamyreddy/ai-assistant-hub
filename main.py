@@ -2,120 +2,62 @@ import streamlit as st
 from PIL import Image
 from google import genai
 
-# ✅ Use API key from Streamlit secrets
+# ✅ Use Streamlit secret for API key
 API_KEY = st.secrets["GEMINI_API_KEY"]
 client = genai.Client(api_key=API_KEY)
 
-# ✅ Must be first!
+# ✅ Page config
 st.set_page_config(
     page_title="AI Assistant Hub",
     page_icon="🤖",
     layout="centered"
 )
 
-# ✅ Hide Streamlit command bar + footer
+# ✅ Optional logo display
+try:
+    logo = Image.open("logo.png")  # use your new transparent logo file
+    st.image(logo, width=120)
+except:
+    st.write("")
+
+# ✅ Title and intro
+st.markdown(
+    """
+    <h2 style='text-align: center; margin-top: 0;'>Welcome to <span style="color:#4a6cf7;">AI Assistant Hub</span> 👋</h2>
+    <p style='text-align: center; font-size: 1.1rem; color: #444;'>Hi Gowtamy! What would you like to do today?</p>
+    """,
+    unsafe_allow_html=True
+)
+
+# ✅ Style override for cleaner look
 st.markdown("""
     <style>
-    header[data-testid="stHeader"] {
-        visibility: hidden;
-    }
-    footer {
-        visibility: hidden;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# ✅ Custom styling
-st.markdown("""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-        background-color: #f9fafc;
-    }
-
-    .main-container {
-        background-color: #ffffff;
-        padding: 2.5rem 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-        max-width: 600px;
-        margin: 4rem auto;
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 2.25rem;
-        color: #222;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-    }
-
-    h4 {
-        font-weight: 400;
-        color: #555;
-        margin-bottom: 2rem;
-    }
-
     .stButton > button {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
         background-color: #4a6cf7;
         color: white;
-        border: none;
-        border-radius: 8px;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 6px;
+        margin-top: 0.5rem;
         margin-bottom: 1rem;
-        transition: background-color 0.2s ease;
+        border: none;
     }
 
     .stButton > button:hover {
         background-color: #3859e0;
+        color: white;
     }
 
-    .footer-text {
-        text-align: center;
-        margin-top: 3rem;
-        font-size: 0.9rem;
-        color: #999;
-    }
-
-    section[data-testid="stSidebar"] {
-        background-color: #f0f2f6;
+    .block-container {
         padding-top: 2rem;
-    }
-
-    .css-1d391kg, .css-1v0mbdj, .css-1dp5vir {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 1rem !important;
-        font-weight: 500 !important;
-        color: #333 !important;
-    }
-
-    .css-1v0mbdj {
-        background-color: #e0e7ff !important;
-        border-radius: 8px;
+        padding-bottom: 2rem;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# ✅ Main container layout
-st.markdown('<div class="main-container">', unsafe_allow_html=True)
+# ✅ Buttons (centered)
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 
-# ✅ Display Logo (centered)
-try:
-    logo = Image.open("logo.jpg")
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image(logo, width=160)
-except:
-    st.warning("Logo not found. Please ensure 'logo.jpg' is in the root directory.")
-
-st.markdown("<h1>Welcome to AI Assistant Hub 👋</h1>", unsafe_allow_html=True)
-st.markdown("<h4>Hi Gowtamy! What would you like to do today?</h4>", unsafe_allow_html=True)
-
-# ✅ Page Navigation Buttons
 if st.button("🎨 Generate an Image"):
     st.switch_page("pages/image_generator.py")
 
@@ -128,4 +70,8 @@ if st.button("📺 Summarize a YouTube Video"):
 st.markdown("</div>", unsafe_allow_html=True)
 
 # ✅ Footer
-st.markdown('<div class="footer-text">Crafted with ❤️ by Gowtamy</div>', unsafe_allow_html=True)
+st.markdown("<hr style='margin-top: 2rem;'>", unsafe_allow_html=True)
+st.markdown(
+    "<p style='text-align: center; font-size: 0.85rem; color: #999;'>Crafted with ❤️ by Gowtamy</p>",
+    unsafe_allow_html=True
+)
