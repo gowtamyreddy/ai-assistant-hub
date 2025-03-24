@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 from google import genai
 
 # ✅ Use API key from Streamlit secrets
@@ -102,15 +103,14 @@ st.markdown("""
 # ✅ Main container layout
 st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-# ✅ Centered Logo using HTML
-st.markdown(
-    """
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <img src="logo.jpg" width="160" style="border-radius: 12px;" />
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# ✅ Display Logo (centered)
+try:
+    logo = Image.open("logo.jpg")
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image(logo, width=160)
+except:
+    st.warning("Logo not found. Please ensure 'logo.jpg' is in the root directory.")
 
 st.markdown("<h1>Welcome to AI Assistant Hub 👋</h1>", unsafe_allow_html=True)
 st.markdown("<h4>Hi Gowtamy! What would you like to do today?</h4>", unsafe_allow_html=True)
