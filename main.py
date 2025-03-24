@@ -15,7 +15,7 @@ st.set_page_config(
 
 # ✅ Optional logo
 try:
-    logo = Image.open("logo.png")  # or logo-transparent.png
+    logo = Image.open("logo.png")  # or use logo-transparent.png
     st.image(logo, width=120)
 except:
     st.write("")
@@ -29,24 +29,21 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ Custom styling for consistent buttons
+# ✅ Style override for consistent UI
 st.markdown("""
     <style>
-    .custom-button button {
+    .stButton > button {
         background-color: #3b5bdb;
         color: white;
         border: none;
         border-radius: 6px;
         font-size: 1rem;
         padding: 0.75rem 1.5rem;
-        width: 300px;
-        margin: 0.5rem auto;
-        display: block;
-        text-align: center;
-        transition: background-color 0.2s ease;
+        width: 100%;
+        margin: 0.5rem 0;
     }
 
-    .custom-button button:hover {
+    .stButton > button:hover {
         background-color: #2f4ab9;
         color: white;
     }
@@ -63,27 +60,24 @@ st.markdown("""
         border-top: 1px solid #eee;
         margin-top: 2rem;
     }
-
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
     </style>
 """, unsafe_allow_html=True)
 
-# ✅ Buttons with uniform style
-st.markdown('<div class="custom-button">', unsafe_allow_html=True)
+# ✅ Centered columns with equal-width buttons
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.markdown('<div style="text-align: center;">', unsafe_allow_html=True)
 
-if st.button("🎨 Generate an Image", key="image"):
-    st.switch_page("pages/image_generator.py")
+    if st.button("🎨  Generate an Image", key="btn1"):
+        st.switch_page("pages/image_generator.py")
 
-if st.button("🖼️ Generate an Image Caption", key="caption"):
-    st.switch_page("pages/image_caption.py")
+    if st.button("🖼️  Generate an Image Caption", key="btn2"):
+        st.switch_page("pages/image_caption.py")
 
-if st.button("📺 Summarize a YouTube Video", key="summary"):
-    st.switch_page("pages/youtube_summary.py")
+    if st.button("📺  Summarize a YouTube Video", key="btn3"):
+        st.switch_page("pages/youtube_summary.py")
 
-st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # ✅ Footer
 st.markdown("<hr>", unsafe_allow_html=True)
