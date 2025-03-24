@@ -111,7 +111,7 @@ except:
     st.warning("Logo not found. Please ensure 'logo.png' is in your project directory.")
 
 st.markdown("<h1>Welcome to AI Assistant Hub 👋</h1>", unsafe_allow_html=True)
-st.markdown("<h4>Hi Gowtamy! What would you like to do today?</h4>", unsafe_allow_html=True)
+st.markdown("<h4>Hi User! What would you like to do today?</h4>", unsafe_allow_html=True)
 
 if st.button("🎨 Generate an Image"):
     st.switch_page("pages/image_generator.py")
