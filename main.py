@@ -1,5 +1,4 @@
 import streamlit as st
-from PIL import Image
 from google import genai
 
 # ✅ Use API key from Streamlit secrets
@@ -25,7 +24,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ✅ Custom styling for fonts, layout, buttons, sidebar
+# ✅ Custom styling
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
@@ -103,16 +102,20 @@ st.markdown("""
 # ✅ Main container layout
 st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-# ✅ Display Logo
-try:
-    logo = Image.open("logo.jpg")
-    st.image(logo, width=120)
-except:
-    st.warning("Logo not found. Please ensure 'logo.png' is in your project directory.")
+# ✅ Centered Logo using HTML
+st.markdown(
+    """
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <img src="logo.jpg" width="160" style="border-radius: 12px;" />
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown("<h1>Welcome to AI Assistant Hub 👋</h1>", unsafe_allow_html=True)
-st.markdown("<h4>Hi User! What would you like to do today?</h4>", unsafe_allow_html=True)
+st.markdown("<h4>Hi Gowtamy! What would you like to do today?</h4>", unsafe_allow_html=True)
 
+# ✅ Page Navigation Buttons
 if st.button("🎨 Generate an Image"):
     st.switch_page("pages/image_generator.py")
 
@@ -125,4 +128,4 @@ if st.button("📺 Summarize a YouTube Video"):
 st.markdown("</div>", unsafe_allow_html=True)
 
 # ✅ Footer
-st.markdown('<div class="footer-text">Crafted by Gowtamy</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer-text">Crafted with ❤️ by Gowtamy</div>', unsafe_allow_html=True)
