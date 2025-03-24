@@ -9,7 +9,7 @@ API_KEY = st.secrets["GEMINI_API_KEY"]
 # Initialize Client
 client = genai.Client(api_key=API_KEY)
 
-st.title("Caption Generator")
+st.title("AI Caption Generator")
 uploaded_img = st.file_uploader("Generating the caption of the img")
 
 if uploaded_img:
