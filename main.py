@@ -24,7 +24,7 @@ except:
 st.markdown(
     """
     <h2 style='text-align: center;'>Welcome to <span style="color:#3b5bdb;">AI Assistant Hub</span> 👋</h2>
-    <p style='text-align: center; font-size: 1.1rem; color: #444;'>Hi Gowtamy! What would you like to do today?</p>
+    <p style='text-align: center; font-size: 1.1rem; color: #444;'>Hi User! What would you like to do today?</p>
     """,
     unsafe_allow_html=True
 )
@@ -81,4 +81,4 @@ with col2:
 
 # ✅ Footer
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("<div class='footer-text'>Crafted with ❤️ by Gowtamy</div>", unsafe_allow_html=True)
+st.markdown("<div class='footer-text'>Crafted by Gowtamy</div>", unsafe_allow_html=True)
