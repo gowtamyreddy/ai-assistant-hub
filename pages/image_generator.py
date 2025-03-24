@@ -1,14 +1,11 @@
 import streamlit as st
-import os
-from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from PIL import Image
 from io import BytesIO
 
-# Load API key
-load_dotenv()
-API_KEY = os.getenv("GEMINI_API_KEY")
+# ✅ Use API key from Streamlit secrets
+API_KEY = st.secrets["GEMINI_API_KEY"]
 
 # Initialize Client
 client = genai.Client(api_key=API_KEY)
