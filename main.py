@@ -1,4 +1,10 @@
 import streamlit as st
+from PIL import Image
+from google import genai
+
+# ✅ Use API key from Streamlit secrets
+API_KEY = st.secrets["GEMINI_API_KEY"]
+client = genai.Client(api_key=API_KEY)
 
 # ✅ Must be first!
 st.set_page_config(
@@ -75,7 +81,6 @@ st.markdown("""
         color: #999;
     }
 
-    /* Sidebar styling */
     section[data-testid="stSidebar"] {
         background-color: #f0f2f6;
         padding-top: 2rem;
@@ -98,7 +103,14 @@ st.markdown("""
 # ✅ Main container layout
 st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-st.markdown("<h1>Welcome 👋</h1>", unsafe_allow_html=True)
+# ✅ Display Logo
+try:
+    logo = Image.open("logo.png")
+    st.image(logo, width=120)
+except:
+    st.warning("Logo not found. Please ensure 'logo.png' is in your project directory.")
+
+st.markdown("<h1>Welcome to AI Assistant Hub 👋</h1>", unsafe_allow_html=True)
 st.markdown("<h4>Hi Gowtamy! What would you like to do today?</h4>", unsafe_allow_html=True)
 
 if st.button("🎨 Generate an Image"):
