@@ -11,7 +11,7 @@ API_KEY = st.secrets["GEMINI_API_KEY"]
 client = genai.Client(api_key=API_KEY)
 
 # Streamlit UI
-st.title("Gemini Image Generator")
+st.title("AI Image Generator")
 
 prompt = st.text_input("Enter your image prompt")
 
